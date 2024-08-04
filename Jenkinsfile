@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
 		when {
    			branch 'stagging_branch'
-		      }
+		}
 		steps {
                 echo 'Building InProgress...'
 				sh '''
