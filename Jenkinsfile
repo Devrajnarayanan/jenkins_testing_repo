@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Deploy') {
 		when {
-   			'stagging_branch'
+   			branch 'stagging_branch'
 		      }
 		steps {
                 echo 'Deploying to Azure....'
