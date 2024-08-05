@@ -3,6 +3,9 @@ pipeline {
 
     stages {
         stage('Checkout') {
+		when {
+   			branch'main'
+		      }
             steps {
                 echo 'Git Checkout'
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Devrajnarayanan/jenkins_testing_repo.git']])
@@ -11,10 +14,21 @@ pipeline {
                 //cleanWs cleanWhenAborted: false, cleanWhenFailure: false, cleanWhenNotBuilt: false, cleanWhenUnstable: false
                 //sh 'ls -lrth'
             }
+		when {
+   			branch'stagging_branch'
+		      }
+            steps {
+                echo 'Git Checkout'
+                checkout scmGit(branches: [[name: 'stagging_branch']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Devrajnarayanan/jenkins_testing_repo.git']]))
+                sh 'ls -lrth'
+                sh 'git branch'
+                //cleanWs cleanWhenAborted: false, cleanWhenFailure: false, cleanWhenNotBuilt: false, cleanWhenUnstable: false
+                //sh 'ls -lrth'
+            }
         }
         stage('Build') {
 		when {
-   			'stagging_branch'
+         		branch 'stagging_branch'
 		      }
 		steps {
                 echo 'Building InProgress...'
@@ -30,7 +44,7 @@ pipeline {
         }
         stage('Deploy') {
 		when {
-   			'stagging_branch'
+   			branch 'stagging_branch'
 		      }
 		steps {
                 echo 'Deploying to Azure....'
