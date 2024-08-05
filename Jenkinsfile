@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Build') {
 		when {
-   			branch 'stagging_branch'
+   			branch 'main'
 		}
 		steps {
                 echo 'Building InProgress...'
@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Deploy') {
 		when {
-   			branch 'stagging_branch'
+   			branch 'main'
 		      }
 		steps {
                 echo 'Deploying to Azure....'
