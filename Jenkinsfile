@@ -14,6 +14,8 @@ pipeline {
                 //cleanWs cleanWhenAborted: false, cleanWhenFailure: false, cleanWhenNotBuilt: false, cleanWhenUnstable: false
                 //sh 'ls -lrth'
             }
+	}
+	stage('Checkout Stage') {
 		when {
    			branch'stagging_branch'
 		      }
