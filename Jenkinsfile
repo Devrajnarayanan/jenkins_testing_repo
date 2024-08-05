@@ -34,13 +34,13 @@ pipeline {
 		      }
 		steps {
                 echo 'Building InProgress...'
-				sh '''
+		sh '''
                 rm -rf build/ node_modules/
-				npm install
+		npm install
                 SWA_CLI_DEPLOYMENT_TOKEN=$(az staticwebapp secrets list --name Jenkins-DevOps --query "properties.apiKey" | sed 's/"//g')
-				echo $SWA_CLI_DEPLOYMENT_TOKEN
-				npm run build
-				ls -lrth
+		echo $SWA_CLI_DEPLOYMENT_TOKEN
+		npm run build
+		ls -lrth
                 '''
             }
         }
