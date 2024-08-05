@@ -19,7 +19,7 @@ pipeline {
 		      }
             steps {
                 echo 'Git Checkout'
-                checkout scmGit(branches: [[name: 'stagging_branch']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Devrajnarayanan/jenkins_testing_repo.git']]))
+                checkout scmGit(branches: [[name: 'stagging_branch']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Devrajnarayanan/jenkins_testing_repo.git']])
                 sh 'ls -lrth'
                 sh 'git branch'
                 //cleanWs cleanWhenAborted: false, cleanWhenFailure: false, cleanWhenNotBuilt: false, cleanWhenUnstable: false
