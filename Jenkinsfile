@@ -53,8 +53,8 @@ pipeline {
                 sh '''
                 SWA_CLI_DEPLOYMENT_TOKEN=$(az staticwebapp secrets list --name Jenkins-DevOps --query "properties.apiKey" | sed 's/"//g')'
                 echo $SWA_CLI_DEPLOYMENT_TOKEN
-				swa deploy ./build --env=Production --deployment-token=$SWA_CLI_DEPLOYMENT_TOKEN --verbose=silly --no-use-keychain
-				'''
+		swa deploy ./build --env=Production --deployment-token=$SWA_CLI_DEPLOYMENT_TOKEN --verbose=silly --no-use-keychain
+		'''
             }
         }
         stage('CleanUp') {
